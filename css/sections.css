@@ -1,0 +1,1090 @@
+/* ==========================================================================
+   SECTIONS.CSS — Section-Specific Styles
+   Project: Romantic Birthday Website
+   ========================================================================== */
+
+/* ==========================================================================
+   1. Landing Screen (#landing-screen)
+   ========================================================================== */
+#landing-screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--deep-burgundy);
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+#landing-screen.landing-exit {
+  opacity: 0;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.landing-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  transform: scale(1.02);
+  transition: transform 12s ease-out;
+}
+
+.landing-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 20, 147, 0.45) 0%, rgba(128, 0, 32, 0.75) 100%);
+  z-index: 1;
+}
+
+#landing-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: var(--white);
+  padding: 30px 24px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.landing-title {
+  font-family: var(--font-cursive);
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 18px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 182, 193, 0.6);
+  letter-spacing: 1px;
+}
+
+.landing-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  font-weight: 300;
+  color: var(--soft-pink);
+  margin-bottom: 40px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.5px;
+}
+
+#open-surprise-btn {
+  font-size: 1.2rem;
+  padding: 18px 46px;
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   2. Hero Section (#hero-section)
+   ========================================================================== */
+#hero-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#hero-section .section-overlay {
+  background: linear-gradient(180deg, rgba(74, 32, 50, 0.4) 0%, rgba(128, 0, 32, 0.6) 75%, var(--warm-cream) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  padding: 40px 20px 80px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#hero-title {
+  font-family: var(--font-cursive);
+  font-size: clamp(2.6rem, 6.5vw, 5rem);
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 24px;
+  text-shadow: 0 4px 25px rgba(128, 0, 32, 0.9), 0 0 35px rgba(255, 20, 147, 0.6);
+}
+
+#hero-subtitle {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+  line-height: 1.8;
+  color: var(--soft-pink);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  text-align: center;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  animation: scrollBounce 2s infinite ease-in-out;
+  user-select: none;
+}
+
+.scroll-indicator span {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  opacity: 0.95;
+}
+
+.scroll-indicator .scroll-arrow {
+  font-size: 1.4rem;
+  color: var(--blush-pink);
+  line-height: 1;
+}
+
+/* ==========================================================================
+   3. Gallery Section (#gallery-section)
+   ========================================================================== */
+#gallery-section {
+  position: relative;
+  background-color: var(--warm-cream);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px 10px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.polaroid {
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(128, 0, 32, 0.08), 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 16px 16px 22px;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.4s ease;
+  position: relative;
+  will-change: transform, box-shadow;
+}
+
+/* Subtle Polaroid rotations for playful scrapbook aesthetic */
+.polaroid:nth-child(6n+1) {
+  transform: rotate(-2deg);
+}
+
+.polaroid:nth-child(6n+2) {
+  transform: rotate(1.5deg);
+}
+
+.polaroid:nth-child(6n+3) {
+  transform: rotate(-1deg);
+}
+
+.polaroid:nth-child(6n+4) {
+  transform: rotate(2deg);
+}
+
+.polaroid:nth-child(6n+5) {
+  transform: rotate(-2.5deg);
+}
+
+.polaroid:nth-child(6n+6) {
+  transform: rotate(1.2deg);
+}
+
+.polaroid:hover {
+  transform: scale(1.05) rotate(0deg) !important;
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(128, 0, 32, 0.22), 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.polaroid-image {
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #f6eded;
+  position: relative;
+}
+
+.polaroid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.polaroid:hover img {
+  transform: scale(1.06);
+}
+
+.polaroid-caption {
+  font-family: var(--font-cursive);
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--deep-burgundy);
+  margin-top: 14px;
+  line-height: 1.3;
+  min-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   4. Letter Section (#letter-section)
+   ========================================================================== */
+#letter-section {
+  position: relative;
+  background-color: var(--warm-cream);
+}
+
+.envelope-wrapper {
+  perspective: 1000px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 360px;
+}
+
+.envelope {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+  transform: translateY(-4px);
+}
+
+.envelope-body {
+  background: var(--warm-cream);
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  border: 2px solid var(--rose-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(128, 0, 32, 0.12);
+  padding: 20px;
+}
+
+.envelope-label {
+  font-family: var(--font-cursive);
+  font-size: 1.5rem;
+  color: var(--deep-burgundy);
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52%;
+  background: var(--blush-pink);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top center;
+  z-index: 2;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  backface-visibility: hidden;
+}
+
+.envelope.opened .envelope-flap {
+  transform: rotateX(-180deg);
+  z-index: 0;
+}
+
+.envelope-hint {
+  font-family: var(--font-sans);
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.95rem;
+  color: var(--deep-burgundy);
+  opacity: 0.75;
+  letter-spacing: 0.5px;
+  transition: opacity 0.3s ease;
+}
+
+.envelope-wrapper:hover .envelope-hint {
+  opacity: 1;
+}
+
+.letter-container {
+  max-width: 650px;
+  margin: 30px auto 0;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.8s ease, max-height 1.2s ease, transform 0.8s ease;
+  transform: translateY(20px);
+}
+
+.letter-container.visible {
+  opacity: 1;
+  max-height: 2500px;
+  transform: translateY(0);
+}
+
+.letter-paper {
+  background: var(--warm-cream);
+  padding: 45px 40px;
+  border-radius: 12px;
+  border: 1px solid var(--rose-gold);
+  box-shadow: 0 15px 45px rgba(128, 0, 32, 0.12),
+              inset 0 0 50px rgba(255, 182, 193, 0.15);
+  position: relative;
+  background-image: radial-gradient(rgba(255, 182, 193, 0.5) 0.8px, transparent 0.8px);
+  background-size: 22px 22px;
+}
+
+.letter-text {
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  line-height: 1.9;
+  color: var(--text-dark);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.letter-text .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  vertical-align: middle;
+  background-color: var(--deep-burgundy);
+  animation: typewriterCursor 0.7s infinite;
+  margin-left: 2px;
+}
+
+/* ==========================================================================
+   5. Reasons Section (#reasons-section)
+   ========================================================================== */
+#reasons-section {
+  position: relative;
+  background-color: var(--warm-cream);
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 22px;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.reason-card {
+  perspective: 1000px;
+  height: 210px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.reason-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(128, 0, 32, 0.08);
+  border: 1px solid rgba(255, 182, 193, 0.35);
+  transition: box-shadow 0.3s ease;
+}
+
+.reason-card:hover .card-front,
+.reason-card:hover .card-back {
+  box-shadow: 0 12px 30px rgba(128, 0, 32, 0.16);
+}
+
+.card-front {
+  background: linear-gradient(135deg, var(--soft-pink) 0%, var(--blush-pink) 100%);
+  color: var(--deep-burgundy);
+}
+
+.reason-number {
+  font-family: var(--font-cursive);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--deep-burgundy);
+  line-height: 1;
+}
+
+.heart-icon {
+  font-size: 2rem;
+  color: var(--deep-pink);
+  margin-top: 10px;
+  animation: heartbeat 2s infinite ease-in-out;
+  line-height: 1;
+}
+
+.card-back {
+  background: linear-gradient(135deg, var(--deep-burgundy) 0%, var(--rose-gold) 100%);
+  color: var(--white);
+  transform: rotateY(180deg);
+  text-align: center;
+}
+
+.reason-text {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--white);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.extra-reason-container {
+  text-align: center;
+  margin-top: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.extra-reason {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  max-width: 600px;
+  width: 100%;
+}
+
+.extra-reason.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.extra-reason-text {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--deep-burgundy);
+  padding: 22px 30px;
+  background: linear-gradient(135deg, var(--soft-pink) 0%, #fff0f3 100%);
+  border-radius: 16px;
+  border: 1px solid var(--rose-gold);
+  box-shadow: 0 8px 25px rgba(128, 0, 32, 0.08);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   6. Cake Section (#cake-section)
+   ========================================================================== */
+#cake-section {
+  position: relative;
+  background-color: var(--warm-cream);
+  text-align: center;
+  overflow: hidden;
+}
+
+.cake-scene {
+  text-align: center;
+  perspective: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.cake {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 50px auto 35px;
+}
+
+.cake-layer {
+  position: relative;
+  border-radius: 10px 10px 4px 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12),
+              inset 0 2px 4px rgba(255, 255, 255, 0.35);
+}
+
+.layer-top {
+  width: 120px;
+  height: 45px;
+  background: linear-gradient(to right, #f8a5c2, #f78fb3, #f8a5c2);
+  z-index: 3;
+}
+
+.layer-middle {
+  width: 160px;
+  height: 50px;
+  background: linear-gradient(to right, #e77f9c, #d63031, #e77f9c);
+  z-index: 2;
+  margin-top: -2px;
+}
+
+.layer-bottom {
+  width: 200px;
+  height: 60px;
+  background: linear-gradient(to right, var(--deep-burgundy), #a31535, var(--deep-burgundy));
+  z-index: 1;
+  margin-top: -2px;
+}
+
+/* Decorative icing drip effect on cake layers */
+.layer-top::before,
+.layer-middle::before,
+.layer-bottom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 10px 10px 0 0;
+}
+
+.cake-plate {
+  width: 240px;
+  height: 16px;
+  background: linear-gradient(to right, #cf929b, var(--rose-gold), #cf929b);
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  margin-top: -4px;
+  z-index: 0;
+}
+
+.candles {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: -30px;
+  width: 100%;
+  padding: 0 12px;
+  z-index: 4;
+}
+
+.candle {
+  width: 8px;
+  height: 30px;
+  background: repeating-linear-gradient(45deg, var(--gold), var(--gold) 4px, var(--warm-cream) 4px, var(--warm-cream) 8px);
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.flame {
+  width: 12px;
+  height: 20px;
+  background: radial-gradient(ellipse at bottom, #fff700 0%, #ff8c00 60%, transparent 90%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
+  top: -18px;
+  left: -2px;
+  animation: flicker 0.3s infinite alternate;
+  filter: drop-shadow(0 0 6px #ff9900) drop-shadow(0 0 12px #ff5500);
+  transform-origin: bottom center;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.flame.blown-out {
+  opacity: 0 !important;
+  transform: scale(0) !important;
+  filter: none !important;
+}
+
+#wish-btn {
+  margin-top: 25px;
+}
+
+.wish-message {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 25px;
+}
+
+.wish-message.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.wish-message p {
+  font-family: var(--font-cursive);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: var(--deep-burgundy);
+  text-shadow: 0 2px 10px rgba(255, 182, 193, 0.5);
+  letter-spacing: 0.5px;
+}
+
+#confetti-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   7. Finale Section (#finale-section)
+   ========================================================================== */
+#finale-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+#finale-section .section-overlay {
+  background: linear-gradient(180deg, rgba(74, 32, 50, 0.65) 0%, rgba(128, 0, 32, 0.75) 100%);
+}
+
+.finale-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  padding: 40px 20px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.cinematic-lines {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cinematic-line {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--white);
+  margin: 10px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  line-height: 1.6;
+}
+
+.cinematic-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cinematic-line:last-child {
+  font-family: var(--font-cursive);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--gold);
+  text-shadow: 0 3px 20px rgba(255, 215, 0, 0.5), 0 0 30px rgba(255, 20, 147, 0.4);
+  margin-top: 15px;
+}
+
+/* ==========================================================================
+   8. Hug Overlay (#hug-overlay)
+   ========================================================================== */
+#hug-overlay,
+.hug-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(128, 0, 32, 0.94) 0%, rgba(30, 10, 20, 0.98) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#hug-overlay.active,
+.hug-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+#hug-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.hug-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  padding: 30px 24px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.hug-message {
+  font-family: var(--font-cursive);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.6;
+  white-space: pre-line;
+  animation: fadeInUp 0.8s ease-out;
+  text-shadow: 0 4px 20px rgba(255, 20, 147, 0.6), 0 0 35px rgba(255, 182, 193, 0.4);
+  color: var(--white);
+}
+
+/* ==========================================================================
+   9. Secret Section & Secret Button
+   ========================================================================== */
+.secret-heart {
+  position: fixed;
+  bottom: 100px;
+  left: 20px;
+  font-size: 1.3rem;
+  color: var(--blush-pink);
+  opacity: 0.3;
+  cursor: pointer;
+  z-index: 100;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+  user-select: none;
+  line-height: 1;
+}
+
+.secret-heart:hover {
+  opacity: 0.8;
+  transform: scale(1.3);
+  color: var(--deep-pink);
+}
+
+.secret-section {
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 5, 12, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  padding: 20px;
+}
+
+.secret-section.active {
+  display: flex;
+  opacity: 1;
+}
+
+.secret-content {
+  text-align: center;
+  color: var(--white);
+  max-width: 520px;
+  width: 100%;
+  padding: 45px 35px;
+  background: linear-gradient(145deg, rgba(128, 0, 32, 0.6) 0%, rgba(74, 32, 50, 0.8) 100%);
+  border-radius: 20px;
+  border: 1px solid var(--rose-gold);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 20, 147, 0.25);
+  position: relative;
+  animation: scaleIn 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.secret-title {
+  font-family: var(--font-cursive);
+  font-size: 2.6rem;
+  color: var(--gold);
+  margin-bottom: 16px;
+  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.45);
+}
+
+.secret-message {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin: 20px 0 30px;
+  color: var(--warm-cream);
+  white-space: pre-line;
+}
+
+.secret-close {
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   10. Floating Hearts Container
+   ========================================================================== */
+#floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-heart-item {
+  position: absolute;
+  color: var(--blush-pink);
+  user-select: none;
+  pointer-events: none;
+  animation: floatingHeart linear infinite;
+  text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+  will-change: transform, opacity;
+}
+
+/* ==========================================================================
+   11. Section Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Landing */
+  .landing-title {
+    font-size: clamp(2.3rem, 5.5vw, 3.4rem);
+  }
+
+  .landing-subtitle {
+    font-size: 1.15rem;
+    margin-bottom: 30px;
+  }
+
+  /* Hero */
+  #hero-title {
+    font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+  }
+
+  #hero-subtitle {
+    font-size: 1.15rem;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .polaroid img {
+    height: 220px;
+  }
+
+  /* Letter */
+  .envelope {
+    width: 270px;
+    height: 180px;
+  }
+
+  .envelope-label {
+    font-size: 1.35rem;
+  }
+
+  .letter-paper {
+    padding: 35px 25px;
+  }
+
+  .letter-text {
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  /* Reasons */
+  .reasons-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+
+  .reason-card {
+    height: 190px;
+  }
+
+  .reason-number {
+    font-size: 2.1rem;
+  }
+
+  /* Cake */
+  .cake {
+    margin: 40px auto 30px;
+  }
+
+  /* Finale */
+  .cinematic-line {
+    font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+  }
+
+  .cinematic-line:last-child {
+    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Landing */
+  .landing-title {
+    font-size: 2.4rem;
+  }
+
+  .landing-subtitle {
+    font-size: 1.05rem;
+  }
+
+  /* Hero */
+  #hero-title {
+    font-size: 2.4rem;
+  }
+
+  #hero-subtitle {
+    font-size: 1.05rem;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .polaroid img {
+    height: 240px;
+  }
+
+  /* Letter */
+  .envelope {
+    width: 250px;
+    height: 165px;
+  }
+
+  .envelope-label {
+    font-size: 1.25rem;
+  }
+
+  .letter-paper {
+    padding: 28px 18px;
+  }
+
+  .letter-text {
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  /* Reasons */
+  .reasons-grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .reason-card {
+    height: 170px;
+  }
+
+  .extra-reason-text {
+    font-size: 1.05rem;
+    padding: 18px 20px;
+  }
+
+  /* Cake */
+  .layer-bottom {
+    width: 170px;
+    height: 50px;
+  }
+
+  .layer-middle {
+    width: 135px;
+    height: 42px;
+  }
+
+  .layer-top {
+    width: 100px;
+    height: 38px;
+  }
+
+  .cake-plate {
+    width: 200px;
+    height: 14px;
+  }
+
+  .candle {
+    height: 25px;
+    width: 7px;
+  }
+
+  .wish-message p {
+    font-size: 1.7rem;
+  }
+
+  /* Secret */
+  .secret-content {
+    padding: 30px 20px;
+  }
+
+  .secret-title {
+    font-size: 2.2rem;
+  }
+
+  .secret-message {
+    font-size: 1.05rem;
+  }
+
+  /* Hug */
+  .hug-message {
+    font-size: 1.9rem;
+  }
+}

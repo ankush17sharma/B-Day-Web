@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A romantic birthday celebration website created with love.">
+  <meta name="theme-color" content="#FFB6C1">
+  <title>Happy Birthday Aanya ❤️</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- tsParticles (for heart/star particles) -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-engine@2/tsparticles.engine.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2/tsparticles.slim.bundle.min.js"></script>
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+  <!-- Noscript fallback for users without JavaScript -->
+  <noscript>
+    <div style="text-align: center; padding: 2rem; font-family: 'Poppins', sans-serif; background-color: #FFF8F0; color: #4A2032;">
+      <h2>JavaScript Required</h2>
+      <p>This romantic birthday experience requires JavaScript to be enabled in your browser. Please enable JavaScript to continue.</p>
+    </div>
+  </noscript>
+
+  <!-- ===== LANDING SCREEN (fullscreen overlay, initially visible) ===== -->
+  <div id="landing-screen">
+    <div class="landing-bg"></div>              <!-- background image -->
+    <div class="landing-overlay"></div>          <!-- pink gradient overlay -->
+    <div id="landing-particles"></div>           <!-- tsParticles: stars + hearts -->
+    <div class="landing-content">
+      <h1 class="landing-title"></h1>            <!-- filled from CONFIG -->
+      <p class="landing-subtitle"></p>           <!-- filled from CONFIG -->
+      <button id="open-surprise-btn" class="glow-btn"></button>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT (hidden initially, revealed after landing) ===== -->
+  <div id="main-content" style="display: none;">
+
+    <!-- HERO SECTION -->
+    <section id="hero-section" class="section fullscreen-section">
+      <div class="section-bg"></div>
+      <div class="section-overlay"></div>
+      <div class="hero-content">
+        <h1 id="hero-title" class="animate-on-scroll"></h1>
+        <p id="hero-subtitle" class="animate-on-scroll"></p>
+      </div>
+      <div class="scroll-indicator animate-on-scroll">
+        <span></span>
+        <div class="scroll-arrow">↓</div>
+      </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery-section" class="section">
+      <div class="section-header">
+        <h2 class="section-title animate-on-scroll"></h2>
+      </div>
+      <div class="gallery-grid">
+        <!-- 6x .polaroid cards, each with image and caption -->
+        <div class="polaroid animate-on-scroll" data-index="0">
+          <div class="polaroid-image">
+            <img src="" alt="" loading="lazy">
+          </div>
+          <p class="polaroid-caption"></p>
+        </div>
+        <div class="polaroid animate-on-scroll" data-index="1">
+          <div class="polaroid-image">
+            <img src="" alt="" loading="lazy">
+          </div>
+          <p class="polaroid-caption"></p>
+        </div>
+        <div class="polaroid animate-on-scroll" data-index="2">
+          <div class="polaroid-image">
+            <img src="" alt="" loading="lazy">
+          </div>
+          <p class="polaroid-caption"></p>
+        </div>
+        <div class="polaroid animate-on-scroll" data-index="3">
+          <div class="polaroid-image">
+            <img src="" alt="" loading="lazy">
+          </div>
+          <p class="polaroid-caption"></p>
+        </div>
+        <div class="polaroid animate-on-scroll" data-index="4">
+          <div class="polaroid-image">
+            <img src="" alt="" loading="lazy">
+          </div>
+          <p class="polaroid-caption"></p>
+        </div>
+        <div class="polaroid animate-on-scroll" data-index="5">
+          <div class="polaroid-image">
+            <img src="" alt="" loading="lazy">
+          </div>
+          <p class="polaroid-caption"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX (hidden overlay) -->
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Photo Lightbox">
+      <div class="lightbox-backdrop"></div>
+      <div class="lightbox-container">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous image">&#10094;</button>
+        <img id="lightbox-img" src="" alt="">
+        <p id="lightbox-caption"></p>
+        <button class="lightbox-next" aria-label="Next image">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- LETTER SECTION -->
+    <section id="letter-section" class="section">
+      <div class="section-header">
+        <h2 class="section-title animate-on-scroll"></h2>
+      </div>
+      <div class="envelope-wrapper animate-on-scroll">
+        <div id="envelope" class="envelope" role="button" tabindex="0" aria-label="Open letter envelope">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <p class="envelope-label"></p>
+          </div>
+        </div>
+        <p class="envelope-hint">Click to open 💌</p>
+      </div>
+      <div id="letter-container" class="letter-container">
+        <div class="letter-paper">
+          <div id="letter-text" class="letter-text"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REASONS SECTION -->
+    <section id="reasons-section" class="section">
+      <div class="section-header">
+        <h2 class="section-title animate-on-scroll"></h2>
+      </div>
+      <div class="reasons-grid" id="reasons-grid">
+        <!-- 7x .reason-card, each with front number & icon, and back text -->
+        <div class="reason-card animate-on-scroll" data-index="0">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="reason-number">1</span>
+              <span class="heart-icon">♥</span>
+            </div>
+            <div class="card-back">
+              <p class="reason-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="reason-card animate-on-scroll" data-index="1">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="reason-number">2</span>
+              <span class="heart-icon">♥</span>
+            </div>
+            <div class="card-back">
+              <p class="reason-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="reason-card animate-on-scroll" data-index="2">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="reason-number">3</span>
+              <span class="heart-icon">♥</span>
+            </div>
+            <div class="card-back">
+              <p class="reason-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="reason-card animate-on-scroll" data-index="3">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="reason-number">4</span>
+              <span class="heart-icon">♥</span>
+            </div>
+            <div class="card-back">
+              <p class="reason-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="reason-card animate-on-scroll" data-index="4">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="reason-number">5</span>
+              <span class="heart-icon">♥</span>
+            </div>
+            <div class="card-back">
+              <p class="reason-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="reason-card animate-on-scroll" data-index="5">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="reason-number">6</span>
+              <span class="heart-icon">♥</span>
+            </div>
+            <div class="card-back">
+              <p class="reason-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="reason-card animate-on-scroll" data-index="6">
+          <div class="card-inner">
+            <div class="card-front">
+              <span class="reason-number">7</span>
+              <span class="heart-icon">♥</span>
+            </div>
+            <div class="card-back">
+              <p class="reason-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="extra-reason-container">
+        <button id="more-reasons-btn" class="glow-btn animate-on-scroll"></button>
+        <div id="extra-reason" class="extra-reason">
+          <p class="extra-reason-text"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAKE SECTION -->
+    <section id="cake-section" class="section">
+      <div class="section-header">
+        <h2 class="section-title animate-on-scroll"></h2>
+      </div>
+      <div class="cake-scene animate-on-scroll">
+        <div class="cake">
+          <div class="cake-layer layer-top">
+            <div class="candles">
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+            </div>
+          </div>
+          <div class="cake-layer layer-middle"></div>
+          <div class="cake-layer layer-bottom"></div>
+          <div class="cake-plate"></div>
+        </div>
+        <button id="wish-btn" class="glow-btn"></button>
+        <div id="wish-message" class="wish-message">
+          <p></p>
+        </div>
+      </div>
+      <canvas id="confetti-canvas"></canvas>
+    </section>
+
+    <!-- FINALE SECTION -->
+    <section id="finale-section" class="section fullscreen-section">
+      <div class="section-bg"></div>
+      <div class="section-overlay"></div>
+      <div class="finale-content">
+        <div class="cinematic-lines">
+          <!-- 5x .cinematic-line, filled from CONFIG -->
+          <p class="cinematic-line animate-on-scroll"></p>
+          <p class="cinematic-line animate-on-scroll"></p>
+          <p class="cinematic-line animate-on-scroll"></p>
+          <p class="cinematic-line animate-on-scroll"></p>
+          <p class="cinematic-line animate-on-scroll"></p>
+        </div>
+        <button id="hug-btn" class="glow-btn animate-on-scroll"></button>
+      </div>
+    </section>
+
+    <!-- HUG OVERLAY (fullscreen, hidden) -->
+    <div id="hug-overlay" class="hug-overlay" aria-hidden="true">
+      <canvas id="hug-canvas"></canvas>
+      <div class="hug-content">
+        <p class="hug-message"></p>
+      </div>
+    </div>
+
+    <!-- SECRET HEART BUTTON (floating, semi-hidden) -->
+    <div id="secret-btn" class="secret-heart" title="♥" role="button" tabindex="0" aria-label="Secret message button">♥</div>
+
+    <!-- SECRET SECTION (hidden) -->
+    <div id="secret-section" class="secret-section" aria-hidden="true" role="dialog" aria-label="Secret Message">
+      <div class="secret-content">
+        <h3 class="secret-title"></h3>
+        <p class="secret-message"></p>
+        <button class="secret-close glow-btn">Close ❤️</button>
+      </div>
+    </div>
+
+  </div><!-- end #main-content -->
+
+  <!-- MUSIC PLAYER (fixed position, always visible after landing) -->
+  <div id="music-player" class="music-player hidden">
+    <button id="music-toggle" class="music-btn" title="Play/Pause Music" aria-label="Toggle background music">
+      <span class="music-icon">♪</span>
+    </button>
+    <div class="music-bars" aria-hidden="true">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <span class="music-title"></span>
+    <audio id="bg-music" loop preload="auto">
+      <source src="" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- FLOATING HEARTS (decorative, throughout page) -->
+  <div id="floating-hearts" aria-hidden="true"></div>
+
+  <!-- JS files loaded at end of body -->
+  <script src="js/config.js"></script>
+  <script src="js/confetti.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/letter.js"></script>
+  <script src="js/cake.js"></script>
+  <script src="js/surprise.js"></script>
+  <script src="js/app.js"></script>  <!-- must be LAST (orchestrator) -->
+</body>
+</html>
